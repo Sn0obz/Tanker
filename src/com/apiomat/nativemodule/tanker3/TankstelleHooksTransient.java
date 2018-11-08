@@ -102,7 +102,6 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     			tmp.setE10(ez);
     			tmp.setE5(e5);
     			tmp.setDiesel(diesel);
-    			tmp.save();
     			ResultList.add(tmp);
     			
     		}
