@@ -53,6 +53,8 @@ public class Tankstelle extends com.apiomat.nativemodule.AbstractClientDataModel
     public static final String MODEL_NAME = "Tankstelle";
 
     /** class specific attributes */
+    @com.apiomat.nativemodule.StaticData( type = com.apiomat.nativemodule.StaticData.Type.Image )
+    private String areaPictureURL;
     private String brand = null;
     private String city = null;
     private Double diesel = null;
@@ -82,6 +84,85 @@ public class Tankstelle extends com.apiomat.nativemodule.AbstractClientDataModel
     public String getModelName( )
     {
         return MODEL_NAME;
+    }
+
+    public String getAreaPictureURL( )
+    {
+        return this.areaPictureURL;
+    }
+
+    public byte[] loadAreaPicture( )
+    {
+        final String resUrl = getAreaPictureURL();
+        return getData( com.apiomat.nativemodule.IResourceMethods.ResourceType.IMAGE, resUrl);
+    }
+
+    public java.io.InputStream loadAreaPictureAsStream( )
+    {
+        final String resUrl = getAreaPictureURL();
+        return getDataAsStream( com.apiomat.nativemodule.IResourceMethods.ResourceType.IMAGE, resUrl);
+    }
+
+    public String getAreaPictureURL( String apiKey, String system, int width, int height, 
+        String backgroundColorAsHex, Double alpha, String format )
+    {
+        final java.lang.StringBuilder additionalParameters = new java.lang.StringBuilder();
+        additionalParameters.append( ".img?apiKey=" );
+        additionalParameters.append( apiKey );
+        additionalParameters.append( "&system=" );
+        additionalParameters.append( system );
+        additionalParameters.append( "&width=" );
+        additionalParameters.append( width );
+        additionalParameters.append( "&height=" );
+        additionalParameters.append( height );
+        
+        if(backgroundColorAsHex != null) 
+        {
+            additionalParameters.append( "&bgcolor=" );
+            additionalParameters.append( backgroundColorAsHex );
+        }
+        if(alpha != null)
+        {
+            additionalParameters.append( "&alpha=" );
+            additionalParameters.append( alpha );
+        }
+        if(format != null)
+        {
+            additionalParameters.append( "&format=" );
+            additionalParameters.append( format );
+        }
+        return getAreaPictureURL( ) + additionalParameters;
+    }
+
+    public byte[] loadAreaPicture( String apiKey, String system, int width, int height, 
+        String backgroundColorAsHex, Double alpha, String format )
+    {
+        final String resUrl = getAreaPictureURL( apiKey, system, width, height, 
+            backgroundColorAsHex, alpha, format );
+        return loadResource(resUrl);
+    }
+
+    public void setAreaPictureURL( String url ) 
+    {
+        this.areaPictureURL = url;
+    }
+
+    /**
+     * @deprecated Use {@link #postAreaPicture( java.io.InputStream data , String fileName, String format )}
+     */
+    @Deprecated
+    public String postAreaPicture( byte[] data , String fileName, String format )
+    {
+        String url = saveResource( data, true, fileName, format );
+        setAreaPictureURL( url );
+        return url;
+    }
+
+    public String postAreaPicture( java.io.InputStream data , String fileName, String format )
+    {
+        String url = saveResource( data, true, fileName, format );
+        setAreaPictureURL( url );
+        return url;
     }
 
     public String getBrand()
