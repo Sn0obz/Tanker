@@ -71,7 +71,9 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     public java.util.List<com.apiomat.nativemodule.tanker3.Tankstelle> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
     	try{
-    		URL APIURL = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat=51.3349021&lng=12.39999524&type=all&read=all&rad=4&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
+    		double LOCLO = new Double((String)Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.LOCLO, r.getApplicationName(), r.getSystem()));
+    		double LOCLA = new Double((String)Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.LOCLA, r.getApplicationName(), r.getSystem()));
+    		URL APIURL = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat="+LOCLA+"&lng="+LOCLO+"&type=all&read=all&rad=4&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
     		InputStream in = APIURL.openStream();
     		ByteArrayOutputStream out = new ByteArrayOutputStream();
     		byte[] buffer = new byte[4096];
