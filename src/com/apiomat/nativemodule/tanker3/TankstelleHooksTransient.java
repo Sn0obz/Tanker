@@ -89,6 +89,9 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     			String name = Stations.getJSONObject(i).getString("name");
     			String brand = Stations.getJSONObject(i).getString("brand");
     			String place = Stations.getJSONObject(i).getString("place");
+    			String ez = Stations.getJSONObject(i).getString("e10");
+    			String e5 = Stations.getJSONObject(i).getString("e5");
+    			String diesel = Stations.getJSONObject(i).getString("diesel");
     			Double loclong = Stations.getJSONObject(i).getDouble("lng");
     			Double loclat = Stations.getJSONObject(i).getDouble("lat");
     			tmp.setName(name);
@@ -96,6 +99,9 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     			tmp.setCity(place);
     			tmp.setLocLatitude(loclat);
     			tmp.setLocLongitude(loclong);
+    			tmp.setE10(ez);
+    			tmp.setE5(e5);
+    			tmp.setDiesel(diesel);
     			ResultList.add(tmp);
     			
     		}
