@@ -105,7 +105,7 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     			tmp.setE5(e5);
     			tmp.setDiesel(diesel);
     			try{
-    				URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+loclat+","+loclong+"&zoom=14&size=400x400&key="+apK);
+    				URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+loclat+","+loclong+"&markers=color:blue%7Clabel:T%7C"+loclat+","+loclong+"&zoom=14&size=400x400&key="+apK);
     				tmp.postAreaPicture(url.openStream(), tmp.getName(), "png");
     			}catch (Exception e){
     				this.model.log(e.getMessage());
