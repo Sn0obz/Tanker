@@ -55,6 +55,9 @@ public class Tankstelle extends com.apiomat.nativemodule.AbstractClientDataModel
     /** class specific attributes */
     private String brand = null;
     private String city = null;
+    private String diesel = null;
+    private String e10 = null;
+    private String e5 = null;
     private double[] loc;
     private String name = null;
     /**
@@ -99,6 +102,36 @@ public class Tankstelle extends com.apiomat.nativemodule.AbstractClientDataModel
     public void setCity( String arg )
     {
         this.city = arg;
+    }
+
+    public String getDiesel()
+    {
+         return this.diesel;
+    }
+
+    public void setDiesel( String arg )
+    {
+        this.diesel = arg;
+    }
+
+    public String getE10()
+    {
+         return this.e10;
+    }
+
+    public void setE10( String arg )
+    {
+        this.e10 = arg;
+    }
+
+    public String getE5()
+    {
+         return this.e5;
+    }
+
+    public void setE5( String arg )
+    {
+        this.e5 = arg;
     }
 
     public double getLocLatitude( )
