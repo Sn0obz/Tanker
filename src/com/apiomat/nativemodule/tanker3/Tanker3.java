@@ -63,6 +63,26 @@ public class Tanker3 implements com.apiomat.nativemodule.IModule
             notifyAllNodes = true,
             order = 1 )
     public static String GAPI = "GAPI";
+    //Location für Tankstellen
+    @com.apiomat.nativemodule.NativeModuleConfig(
+            datatype = Type.ENUM,
+            example = "Something",
+            title = "LOC",
+            info = "LONG",
+            defaultValue = "ENTER ME",
+            notifyAllNodes = true,
+            order = 1 )
+    public static String LOCLO = "LOCLO";
+    //
+    @com.apiomat.nativemodule.NativeModuleConfig(
+            datatype = Type.ENUM,
+            example = "Something",
+            title = "LOC",
+            info = "LONG",
+            defaultValue = "ENTER ME",
+            notifyAllNodes = true,
+            order = 1 )
+    public static String LOCLA = "LOCLA";
     // Read @NativeModuleConfig values using the following code:
     // Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.HOSTNAME, appName, system );
 
