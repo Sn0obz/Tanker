@@ -23,6 +23,13 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package com.apiomat.nativemodule.tanker3;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.List;
+
+import org.json.JSONObject;
+
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
 
@@ -61,7 +68,23 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     @Override
     public java.util.List<com.apiomat.nativemodule.tanker3.Tankstelle> doGetAll( String query, com.apiomat.nativemodule.Request r )
     {
-        return null;
+    	try{
+    		URL APIURL = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat=51.3349021&lng=12.39999524&type=all&read=all&rad=4&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
+    		InputStream in = APIURL.openStream();
+    		ByteArrayOutputStream out = new ByteArrayOutputStream();
+    		byte[] buffer = new byte[4096];
+    		int n;
+    		while ( (n = in.read(buffer)) > 0){
+    			out.write(buffer,0,n);
+    		}
+    		in.close();
+    		JSONObject response = new JSONObject(out.toString());
+    		this.model.log(Level.DEBUG,response.toString());
+    		//List<Tankstelle> ResultList = [] ;
+    		return null;
+    	}catch (Exception e){
+    		return null;
+    	}
     }
 
     @Override
