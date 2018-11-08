@@ -28,6 +28,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.apiomat.nativemodule.*;
@@ -80,8 +81,30 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     		in.close();
     		JSONObject response = new JSONObject(out.toString());
     		this.model.log(Level.DEBUG,response.toString());
-    		//List<Tankstelle> ResultList = [] ;
-    		return null;
+    		List<Tankstelle> ResultList = null;
+    		JSONArray Stations = response.getJSONArray("stations");
+    		for(int i=0;i<Stations.length();i++){
+    			Tankstelle tmp = new Tankstelle(); 
+    			String name = Stations.getJSONObject(i).getString("name");
+    			String brand = Stations.getJSONObject(i).getString("brand");
+    			String place = Stations.getJSONObject(i).getString("place");
+    			Double loclong = Stations.getJSONObject(i).getDouble("lng");
+    			Double loclat = Stations.getJSONObject(i).getDouble("lat");
+    			tmp.setName(name);
+    			tmp.setBrand(brand);
+    			tmp.setCity(place);
+    			tmp.setLocLatitude(loclat);
+    			tmp.setLocLongitude(loclong);
+    			ResultList.add(tmp);
+    			
+    		}
+    		return ResultList;
+//    		for (Object station : Stations) {
+//    			station = (JSONObject) station;
+//    			Tankstelle tmp  = new Tankstelle();
+//    			tmp.setName(station.);
+//				
+//			}
     	}catch (Exception e){
     		return null;
     	}
