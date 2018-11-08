@@ -95,6 +95,7 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     			String name = Stations.getJSONObject(i).getString("name");
     			String brand = Stations.getJSONObject(i).getString("brand");
     			String place = Stations.getJSONObject(i).getString("place");
+    			this.model.log(Level.DEBUG,"Tankstelle "+name+" Nummer: "+i);
     			Double ez = Stations.getJSONObject(i).getDouble("e10");
     			Double e5 = Stations.getJSONObject(i).getDouble("e5");
     			Double diesel = Stations.getJSONObject(i).getDouble("diesel");
