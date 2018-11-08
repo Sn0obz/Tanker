@@ -26,6 +26,7 @@ package com.apiomat.nativemodule.tanker3;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -81,7 +82,7 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     		in.close();
     		JSONObject response = new JSONObject(out.toString());
     		this.model.log(Level.DEBUG,response.toString());
-    		List<Tankstelle> ResultList = null;
+    		List<Tankstelle> ResultList = new ArrayList<>();
     		JSONArray Stations = response.getJSONArray("stations");
     		for(int i=0;i<Stations.length();i++){
     			Tankstelle tmp = new Tankstelle(); 
@@ -98,6 +99,9 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     			ResultList.add(tmp);
     			
     		}
+    		if (ResultList != null){
+    			this.model.log(Level.DEBUG, "Got Something");
+    			}
     		return ResultList;
 //    		for (Object station : Stations) {
 //    			station = (JSONObject) station;
