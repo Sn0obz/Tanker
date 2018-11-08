@@ -73,7 +73,7 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     	try{
     		double LOCLO = new Double((String)Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.LOCLO, r.getApplicationName(), r.getSystem()));
     		double LOCLA = new Double((String)Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.LOCLA, r.getApplicationName(), r.getSystem()));
-    		URL APIURL = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat="+LOCLA+"&lng="+LOCLO+"&type=all&read=all&rad=20&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
+    		URL APIURL = new URL("https://creativecommons.tankerkoenig.de/json/list.php?lat="+LOCLA+"&lng="+LOCLO+"&type=all&read=all&rad=10&sort=dist&apikey=4413f0a7-8d1c-2e78-9d4b-85062d1a9d0a");
     		this.model.log(Level.DEBUG,APIURL.toString());
     		InputStream in = APIURL.openStream();
     		ByteArrayOutputStream out = new ByteArrayOutputStream();
