@@ -24,6 +24,8 @@
  */
 package com.apiomat.nativemodule.tanker3;
 
+import com.apiomat.nativemodule.NativeModuleConfig.Type;
+
 
 /**
  * Generated class for starting and stopping your module. 
@@ -52,6 +54,15 @@ public class Tanker3 implements com.apiomat.nativemodule.IModule
     //     order = 1 )
     // public static String HOSTNAME = "Tanker3_hostname";
     //
+    @com.apiomat.nativemodule.NativeModuleConfig(
+            datatype = Type.TEXT,
+            example = "Something",
+            title = "GAPI",
+            info = "GAPI",
+            defaultValue = "ENTER ME",
+            notifyAllNodes = true,
+            order = 1 )
+    public static String GAPI = "GAPI";
     // Read @NativeModuleConfig values using the following code:
     // Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.HOSTNAME, appName, system );
 

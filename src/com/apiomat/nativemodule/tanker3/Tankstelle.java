@@ -53,6 +53,8 @@ public class Tankstelle extends com.apiomat.nativemodule.AbstractClientDataModel
     public static final String MODEL_NAME = "Tankstelle";
 
     /** class specific attributes */
+    @com.apiomat.nativemodule.StaticData( type = com.apiomat.nativemodule.StaticData.Type.Image )
+    private String areaPictureURL;
     private String brand = null;
     private String city = null;
     private Double diesel = null;

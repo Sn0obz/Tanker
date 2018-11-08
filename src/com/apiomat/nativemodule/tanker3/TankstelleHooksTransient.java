@@ -34,6 +34,7 @@ import org.json.JSONObject;
 
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
+import com.apiomat.nativemodule.salesmodule3.SalesModule3;
 
 
 /**
@@ -81,9 +82,9 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     		}
     		in.close();
     		JSONObject response = new JSONObject(out.toString());
-    		this.model.log(Level.DEBUG,response.toString());
     		List<Tankstelle> ResultList = new ArrayList<>();
     		JSONArray Stations = response.getJSONArray("stations");
+    		String apK = (String)Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.GAPI, r.getApplicationName(), r.getSystem());
     		for(int i=0;i<Stations.length();i++){
     			Tankstelle tmp = new Tankstelle(); 
     			String name = Stations.getJSONObject(i).getString("name");
@@ -102,19 +103,12 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     			tmp.setE10(ez);
     			tmp.setE5(e5);
     			tmp.setDiesel(diesel);
+    			URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="+loclat+","+loclong+"&zoom=14&size=400x400&key="+apK);
+				tmp.postAreaPicture(url.openStream(), tmp.getName(), "png");
     			ResultList.add(tmp);
     			
     		}
-    		if (ResultList != null){
-    			this.model.log(Level.DEBUG, "Got Something");
-    			}
     		return ResultList;
-//    		for (Object station : Stations) {
-//    			station = (JSONObject) station;
-//    			Tankstelle tmp  = new Tankstelle();
-//    			tmp.setName(station.);
-//				
-//			}
     	}catch (Exception e){
     		return null;
     	}
