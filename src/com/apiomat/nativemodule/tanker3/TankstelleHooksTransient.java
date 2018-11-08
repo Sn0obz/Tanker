@@ -91,14 +91,19 @@ public class TankstelleHooksTransient<T extends com.apiomat.nativemodule.tanker3
     		JSONArray Stations = response.getJSONArray("stations");
     		String apK = (String)Tanker3.APP_CONFIG_PROXY.getConfigValue( Tanker3.GAPI, r.getApplicationName(), r.getSystem());
     		for(int i=0;i<Stations.length();i++){
+    			Double ez = 0.0;
+    			Double e5 = 0.0;
+    			Double diesel = 0.0;
     			Tankstelle tmp = new Tankstelle(); 
     			String name = Stations.getJSONObject(i).getString("name");
     			String brand = Stations.getJSONObject(i).getString("brand");
     			String place = Stations.getJSONObject(i).getString("place");
     			this.model.log(Level.DEBUG,"Tankstelle "+name+" Nummer: "+i);
-    			Double ez = Stations.getJSONObject(i).getDouble("e10");
-    			Double e5 = Stations.getJSONObject(i).getDouble("e5");
-    			Double diesel = Stations.getJSONObject(i).getDouble("diesel");
+    			try{
+    			ez = Stations.getJSONObject(i).getDouble("e10");
+    			e5 = Stations.getJSONObject(i).getDouble("e5");
+    			diesel = Stations.getJSONObject(i).getDouble("diesel");
+    			}catch (Exception e){}
     			Double loclong = Stations.getJSONObject(i).getDouble("lng");
     			Double loclat = Stations.getJSONObject(i).getDouble("lat");
     			tmp.setName(name);
