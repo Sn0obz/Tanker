@@ -65,7 +65,7 @@ public class Tanker3 implements com.apiomat.nativemodule.IModule
     public static String GAPI = "GAPI";
     //Location für Tankstellen
     @com.apiomat.nativemodule.NativeModuleConfig(
-            datatype = Type.ENUM,
+            datatype = Type.NUMBER,
             example = "Something",
             title = "LOC",
             info = "LONG",
@@ -75,7 +75,7 @@ public class Tanker3 implements com.apiomat.nativemodule.IModule
     public static String LOCLO = "LOCLO";
     //
     @com.apiomat.nativemodule.NativeModuleConfig(
-            datatype = Type.ENUM,
+            datatype = Type.NUMBER,
             example = "Something",
             title = "LOC",
             info = "LONG",
